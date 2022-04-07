@@ -1,0 +1,56 @@
+{
+    "name": "phare/phare-laravel",
+    "description": "Laravel integration for the Phare user testing platform",
+    "keywords": [
+        "phare",
+        "laravel",
+        "privacy",
+        "user-testing"
+    ],
+    "homepage": "https://github.com/phare/phare-laravel",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nicolas Beauvais",
+            "email": "nicolas@phare.app",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.0|^8.1",
+        "illuminate/contracts": "^7.0|^8.0|^9.0",
+        "phare/phare-php": "^0.0.2"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-latest",
+        "orchestra/testbench": "^7.0",
+        "phpunit/phpunit": "^9.5",
+        "ext-dom": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Phare\\PhareLaravel\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Phare\\PhareLaravel\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Phare\\Phare\\PhareServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
