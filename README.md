@@ -25,14 +25,120 @@ This is the contents of the published config file:
 
 ```php
 return [
+    /*
+    |--------------------------------------------------------------------------
+    | Phare status
+    |--------------------------------------------------------------------------
+    |
+    | By default, if included in your HTML <head> tag, Phare is enabled. This
+    | option allow you to disable Phare with an environment variable,
+    | without having to change your code.
+    |
+    */
+
+    'enabled' => env('PHARE_ENABLED', true),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Public and secret key
+    |--------------------------------------------------------------------------
+    |
+    | The public and secret key are used to generate a secure token that
+    | authenticate your users to Phare. You can find your public and
+    | secret in your project settings.
+    |
+    | https://phare.app/
+    |
+    */
+
+    'public_key' => env('PHARE_PUBLIC_KEY'),
+
+    'secret_key' => env('PHARE_SECRET_KEY'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Hashing salt
+    |--------------------------------------------------------------------------
+    |
+    | A unique user identifier (usually the user ID) is needed for Phare to
+    | authenticate one of your user. To keep Phare privacy-first, all user
+    | identifiers are hashed with a Salt of your choice.
+    |
+    | Be careful if modifying this value, user in your Phare dashboard will
+    | be duplicated.
+    |
+    | By default, your app key is used as the salt.
+    |
+    */
+
+    'salt' => env('PHARE_SALT', env('APP_KEY')),
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Token expiration
+    |--------------------------------------------------------------------------
+    |
+    | Expiration time, in seconds, of the generated user Token, used to
+    | authenticate your users in Phare.
+    |
+    | The default 300 seconds should be a good value for most projects.
+    |
+    */
+
+    'expiration' => 300,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Token leeway
+    |--------------------------------------------------------------------------
+    |
+    | Leeway, in seconds, to prevent incorrect time validation of the token
+    | in case of server clock skew.
+    |
+    | The default 10 seconds is more than enough, you can set the leeway
+    | to 0 if you're sure your server's clock is properly configured.
+    |
+    */
+
+    'leeway' => 10,
 ];
 ```
 
 ## Usage
 
-```php
-$phare = new Phare\Phare();
-echo $phare->echoPhrase('Hello, Phare!');
+This library will automatically detect if a user is logged in, using the default guard of your application, create a user token and render the Phare widget script.
+
+All you need to do is call the `@phare()` blade directive in the `<head>` section of your website:
+
+```html
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Other meta/link/scripts tags -->
+  
+  @phare()
+</head>
+<body>
+  <!-- content -->
+</body>
+</html>
+```
+
+You can choose an authentication guard of your choice if you do not wish to load the phare script to users logging in with the default authentication guard.
+
+```html
+<head>
+  @phare(['guard' => 'custom'])
+</head>
+```
+
+If your application has a content security policy, you can provide a `nonce` to be added to the Phare script as follow:
+
+```html
+<head>
+  @phare(['nonce' => $nonce])
+</head>
 ```
 
 ## Testing
@@ -44,10 +150,6 @@ composer test
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
-
-## Contributing
-
-Please see [CONTRIBUTING](https://github.com/spatie/.github/blob/main/CONTRIBUTING.md) for details.
 
 ## Security Vulnerabilities
 
