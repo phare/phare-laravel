@@ -13,7 +13,7 @@ class Script
      */
     public static function render(array $arguments = []): ?string
     {
-        if (!config('phare.enabled')) {
+        if (! config('phare.enabled')) {
             return null;
         }
 
@@ -26,7 +26,7 @@ class Script
         $guard = $arguments['guard'] ?? config('auth.guards.default');
         $nonce = $arguments['nonce'] ?? null;
 
-        if (!$user = auth($guard)->user()) {
+        if (! $user = auth($guard)->user()) {
             return null;
         }
 

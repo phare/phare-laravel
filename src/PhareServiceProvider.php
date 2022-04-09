@@ -21,7 +21,8 @@ class PhareServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../config/phare.php', 'phare'
+            __DIR__.'/../config/phare.php',
+            'phare'
         );
     }
 }
