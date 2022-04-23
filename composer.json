@@ -47,7 +47,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Phare\\Phare\\PhareServiceProvider"
+                "Phare\\PhareLaravel\\PhareServiceProvider"
             ]
         }
     },
