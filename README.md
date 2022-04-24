@@ -15,6 +15,17 @@ You can install the package via composer:
 composer require phare/phare-laravel
 ```
 
+To keep communication secure between Phare and your application you must set your public and secret key in your application's `.env` file:
+
+```dotenv
+PHARE_PUBLIC_KEY=your_public_key
+PHARE_SECRET_KEY=your_secret_key
+```
+
+Both keys can be found in your Phare dashboard on the [integration](https://phare.app/integration) page.
+
+## Configuration
+
 You can publish the config file with:
 
 ```bash
@@ -118,15 +129,6 @@ return [
 ];
 ```
 
-To identify your organization when communicating with Phare you must set your 
-public key in your `.env` file:
-
-```dotenv
-PHARE_PUBLIC_KEY=your_public_key
-```
-
-You can find your public key on your Phare dashboard on the [integration](https://phare.app/integration) page.
-
 ## Usage
 
 This library will automatically detect if a user is logged in, using the default guard of your application, create a user token and render the Phare widget script.
@@ -162,8 +164,6 @@ If your application has a content security policy, you can provide a `nonce` to 
   @phare(['nonce' => $nonce])
 </head>
 ```
-
-Do not forget to go through the `config/phare.php` file to see available options.
 
 ## Testing
 

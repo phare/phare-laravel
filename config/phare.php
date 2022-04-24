@@ -34,15 +34,15 @@ return [
     | Secret key
     |--------------------------------------------------------------------------
     |
-    | The secret key is used to encrypt user identifier, this key is set by
-    | your application and Phare should never receive knowledge of it.
-    | By default your Laravel APP_KEY will be used.
+    | The secret key is used to encrypt communication between Phare and your
+    | app, and should never be publicly shared. You can find your secret
+    | key on the integration page of your dashboard.
     |
     | https://phare.app/integration
     |
     */
 
-    'secret_key' => env('PHARE_SECRET_KEY', env('APP_KEY')),
+    'secret_key' => env('PHARE_SECRET_KEY'),
 
     /*
     |--------------------------------------------------------------------------
