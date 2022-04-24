@@ -40,20 +40,33 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Public and secret key
+    | Public key
     |--------------------------------------------------------------------------
     |
-    | The public and secret key are used to generate a secure token that
-    | authenticate your users to Phare. You can find your public and
-    | secret in your project settings.
+    | The public key is used to identify your organization when communicating
+    | with Phare. You can find your public key on the integration page of
+    | your dashboard.
     |
-    | https://phare.app/
+    | https://phare.app/integration
     |
     */
 
     'public_key' => env('PHARE_PUBLIC_KEY'),
 
-    'secret_key' => env('PHARE_SECRET_KEY'),
+    /*
+    |--------------------------------------------------------------------------
+    | Secret key
+    |--------------------------------------------------------------------------
+    |
+    | The secret key is used to encrypt user identifier, this key is set by
+    | your application and Phare should never receive knowledge of it.
+    | By default your Laravel APP_KEY will be used.
+    |
+    | https://phare.app/integration
+    |
+    */
+
+    'secret_key' => env('PHARE_SECRET_KEY', env('APP_KEY')),
 
     /*
     |--------------------------------------------------------------------------
@@ -105,6 +118,15 @@ return [
 ];
 ```
 
+To identify your organization when communicating with Phare you must set your 
+public key in your `.env` file:
+
+```dotenv
+PHARE_PUBLIC_KEY=your_public_key
+```
+
+You can find your public key on your Phare dashboard on the [integration](https://phare.app/integration) page.
+
 ## Usage
 
 This library will automatically detect if a user is logged in, using the default guard of your application, create a user token and render the Phare widget script.
@@ -133,13 +155,15 @@ You can choose an authentication guard of your choice if you do not wish to load
 </head>
 ```
 
-If your application has a content security policy, you can provide a `nonce` to be added to the Phare script as follow:
+If your application has a content security policy, you can provide a `nonce` to be added to the Phare script as follows:
 
 ```html
 <head>
   @phare(['nonce' => $nonce])
 </head>
 ```
+
+Do not forget to go through the `config/phare.php` file to see available options.
 
 ## Testing
 

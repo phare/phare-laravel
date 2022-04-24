@@ -16,20 +16,33 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Public and secret key
+    | Public key
     |--------------------------------------------------------------------------
     |
-    | The public and secret key are used to generate a secure token that
-    | authenticate your users to Phare. You can find your public and
-    | secret in your project settings.
+    | The public key is used to identify your organization when communicating
+    | with Phare. You can find your public key on the integration page of
+    | your dashboard.
     |
-    | https://phare.app/
+    | https://phare.app/integration
     |
     */
 
     'public_key' => env('PHARE_PUBLIC_KEY'),
 
-    'secret_key' => env('PHARE_SECRET_KEY'),
+    /*
+    |--------------------------------------------------------------------------
+    | Secret key
+    |--------------------------------------------------------------------------
+    |
+    | The secret key is used to encrypt user identifier, this key is set by
+    | your application and Phare should never receive knowledge of it.
+    | By default your Laravel APP_KEY will be used.
+    |
+    | https://phare.app/integration
+    |
+    */
+
+    'secret_key' => env('PHARE_SECRET_KEY', env('APP_KEY')),
 
     /*
     |--------------------------------------------------------------------------
