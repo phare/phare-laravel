@@ -23,7 +23,7 @@ return [
     | with Phare. You can find your public key on the integration page of
     | your dashboard.
     |
-    | https://phare.app/integration
+    | https://pharehq.com/integration
     |
     */
 
@@ -38,7 +38,7 @@ return [
     | app, and should never be publicly shared. You can find your secret
     | key on the integration page of your dashboard.
     |
-    | https://phare.app/integration
+    | https://pharehq.com/integration
     |
     */
 

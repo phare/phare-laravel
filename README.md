@@ -5,7 +5,7 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/phare/phare-laravel/Check%20&%20fix%20styling?label=code%20style)](https://github.com/phare/phare-laravel/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/phare/phare-laravel.svg?style=flat-square)](https://packagist.org/packages/phare/phare-laravel)
 
-Integrate the [Phare privacy first, in-app user testing platform](https://phare.app/) into your Laravel applications.
+Integrate the [Phare privacy first, in-app user testing platform](https://pharehq.com/) into your Laravel applications.
 
 ## Installation
 
@@ -22,7 +22,7 @@ PHARE_PUBLIC_KEY=your_public_key
 PHARE_SECRET_KEY=your_secret_key
 ```
 
-Both keys can be found in your Phare dashboard on the [integration](https://phare.app/integration) page.
+Both keys can be found in your Phare dashboard on the [integration](https://pharehq.com/integration) page.
 
 ## Configuration
 
@@ -58,7 +58,7 @@ return [
     | with Phare. You can find your public key on the integration page of
     | your dashboard.
     |
-    | https://phare.app/integration
+    | https://pharehq.com/integration
     |
     */
 
@@ -73,7 +73,7 @@ return [
     | your application and Phare should never receive knowledge of it.
     | By default your Laravel APP_KEY will be used.
     |
-    | https://phare.app/integration
+    | https://pharehq.com/integration
     |
     */
 
@@ -177,7 +177,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 
 ## Security Vulnerabilities
 
-If you discover any security-related issues, please email [nicolas@phare.app](mailto:nicolas@phare.app) instead of using the issue tracker.
+If you discover any security-related issues, please email [nicolas@pharehq.com](mailto:nicolas@pharehq.com) instead of using the issue tracker.
 
 ## Credits
 
